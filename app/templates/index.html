@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hi, {{ user.username }}</h1>
+    {% for todo in todos %}
+    <div><p>{{ todo.author.username }}: {{ todo.body }}, date: <b>{{ todo.due_date }}</b></p></div>
+    {% endfor %}
+{% endblock %}
