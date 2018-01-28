@@ -25,6 +25,9 @@ class User(UserMixin, db.Model):
         return 'https://ww.gravatar.com/avatar.com/avatar/{}'.format(
             digest, size)
 
+    def all_todos(self):
+        return Todo.query.filter_by(user_id=self.id).order_by(Todo.timestamp.asc())
+
 
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
