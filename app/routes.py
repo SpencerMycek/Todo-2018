@@ -1,15 +1,28 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, TodoForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Todo
 from werkzeug.urls import url_parse
+from datetime import datetime
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
+    form1 = TodoForm()
+    if form1.validate_on_submit():
+        day = form1.day.data
+        month = form1.month.data
+        year = form1.year.data
+        date_str = year + '-' + month + '-' + day
+        datetime_obj = datetime.strptime(date_str, '%Y-%b-%d')
+        todo = Todo(body=form1.todo.data, author=current_user,
+                    due_date=datetime_obj)
+        db.session.add(todo)
+        db.session.commit()
+        return redirect(url_for('index'))
     todos = [
         {
             'author': {'username': 'Spencer'},
@@ -22,7 +35,7 @@ def index():
             'due_date': '1/29/18'
         }
     ]
-    return render_template('index.html', title='Home', todos=todos)
+    return render_template('index.html', title='Home', form=form1, todos=todos)
 
 
 @app.route('/login', methods=['GET', 'POST'])

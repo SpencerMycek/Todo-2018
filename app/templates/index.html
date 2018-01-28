@@ -2,6 +2,22 @@
 
 {% block content %}
     <h1>Hi, {{ current_user.username }}!</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.todo.label }}<br>
+            {{ form.todo(cols=32, rows=4) }}<br>
+            <span>
+                {{ form.day.label }} {{ form.day }}
+                {{ form.month.label }} {{ form.month }}
+                {{ form.year.label }} {{ form.year }}
+            </span><br>
+            {% for error in form.todo.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit }}</p>
+    </form>
     {% for todo in todos %}
     <div><p>{{ todo.author.username }}: {{ todo.body }}, date: <b>{{ todo.due_date }}</b></p></div>
     {% endfor %}
