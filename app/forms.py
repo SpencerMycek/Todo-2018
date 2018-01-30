@@ -59,6 +59,6 @@ class TodoForm(FlaskForm):
     submit = SubmitField('Submit')
 
 
-class CompleteForm(FlaskForm):
-    complete = BooleanField("Complete")
-    submit = SubmitField('Submit')
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Request Password Reset')
