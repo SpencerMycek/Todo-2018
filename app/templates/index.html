@@ -24,6 +24,6 @@
         <p>{{ form.submit }}</p>
     </form>
     {% for todo in todos %}
-    <div><p>{{ todo.author.username }}: {{ todo.body }}, date: <b>{{ todo.due_date }}</b></p></div>
+        {% include '_todos.html' %}
     {% endfor %}
 {% endblock %}

@@ -1,6 +1,13 @@
 <table>
     <tr valign="top">
         <td><img src="{{ todo.author.avatar(36) }}"></td>
-        <td>{{ todo.body }}, due: <b>{{ todo.due_date }}</b></td>
+        <td>{{ todo.body }}<br> due: <b>{{ todo.due_date }}</b></td>
     </tr>
 </table>
+<div>
+    {% if not todo.completed %}
+        <p>Finished: <a href="/to-do/{{ todo.id }}">Complete!</a></p>
+    {% else %}
+        <p>Not finished: <a href="{{ url_for('to_do', id=todo.id) }}">undo</a></p>
+    {% endif %}
+</div>

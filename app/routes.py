@@ -68,3 +68,11 @@ def register():
         flash('Congratulations, you are now registered!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
+
+@app.route('/to-do/<id>')
+def to_do(id):
+    todo = Todo.query.filter_by(id=id).first_or_404()
+    todo.completed = not todo.completed
+    db.session.commit()
+    return redirect(url_for('index'))
