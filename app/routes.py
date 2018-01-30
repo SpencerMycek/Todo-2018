@@ -23,18 +23,7 @@ def index():
         db.session.add(todo)
         db.session.commit()
         return redirect(url_for('index'))
-    todos = [
-        {
-            'author': {'username': 'Spencer'},
-            'body': 'Make dentist appointment',
-            'due_date': '2/1/18'
-        },
-        {
-            'author': {'username': 'Spencer'},
-            'body': 'Finish Physics homework',
-            'due_date': '1/29/18'
-        }
-    ]
+    todos = current_user.all_todos().all()
     return render_template('index.html', title='Home', form=form1, todos=todos)
 
 
