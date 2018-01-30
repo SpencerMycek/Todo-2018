@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):
             digest, size)
 
     def all_todos(self):
-        return Todo.query.filter_by(user_id=self.id).order_by(Todo.timestamp.desc())
+        return Todo.query.filter_by(user_id=self.id).order_by(Todo.due_date.asc())
 
 
 class Todo(db.Model):

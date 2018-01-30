@@ -12,6 +12,11 @@
                 {{ form.month.label }} {{ form.month }}
                 {{ form.year.label }} {{ form.year }}
             </span><br>
+            <span>
+                {{ form.hour.label }}
+                {{ form.hour }}:{{ form.minute  }}
+                {{ form.a_p }}
+            </span><br>
             {% for error in form.todo.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}

@@ -16,8 +16,12 @@ def index():
         day = form1.day.data
         month = form1.month.data
         year = form1.year.data
-        date_str = year + '-' + month + '-' + day
-        datetime_obj = datetime.strptime(date_str, '%Y-%b-%d')
+        hour = form1.hour.data
+        minute = form1.minute.data
+        a_p = form1.a_p.data
+        date_str = year + '-' + month + '-' + day + '-' \
+            + hour + '-' + minute + '-' + a_p
+        datetime_obj = datetime.strptime(date_str, '%Y-%b-%d-%I-%M-%p')
         todo = Todo(body=form1.todo.data, author=current_user,
                     due_date=datetime_obj)
         db.session.add(todo)

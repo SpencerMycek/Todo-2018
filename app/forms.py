@@ -52,6 +52,10 @@ class TodoForm(FlaskForm):
                   ('22', '22'), ('23', '23'), ('24', '24'), ('25', '25'), ('26', '26'), ('27', '27'), ('28', '28'),
                   ('29', '29'), ('30', '30'), ('31', '31')]
     day = SelectField("Day", choices=day_choice, validators=[DataRequired()])
+    hour = SelectField("Time", choices=day_choice[0:12:], validators=[DataRequired()])
+    minute = SelectField("Minute", choices=[('0', '0'), ('15', '15'), ('30', '30'), ('45', '45')],
+                         validators=[DataRequired()])
+    a_p = SelectField("AM or PM", choices=[('AM', 'AM'), ('PM', 'PM')], validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 
