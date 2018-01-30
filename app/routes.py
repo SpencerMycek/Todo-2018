@@ -27,8 +27,17 @@ def index():
         db.session.add(todo)
         db.session.commit()
         return redirect(url_for('index'))
-    todos = current_user.all_todos().all()
-    return render_template('index.html', title='Home', form=form1, todos=todos)
+
+    page = request.args.get('page', 1, type=int)
+    todos = current_user.all_todos().paginate(
+        page, app.config['TODOS_PER_PAGE'], False)
+    next_url = url_for('index', page=todos.next_num) \
+        if todos.has_next else None
+    prev_url = url_for('index', page=todos.prev_num) \
+        if todos.has_prev else None
+    return render_template('index.html', title='Home', form=form1,
+                           todos=todos.items, next_url=next_url,
+                           prev_url=prev_url)
 
 
 @app.route('/login', methods=['GET', 'POST'])
