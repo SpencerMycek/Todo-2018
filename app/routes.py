@@ -80,6 +80,21 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
+@app.route('/all')
+@login_required
+def all():
+    page = request.args.get('page', 1, type=int)
+    todos = current_user.all_todos().paginate(
+        page, app.config['TODOS_PER_ALL'], False)
+    next_url = url_for('index', page=todos.next_num) \
+        if todos.has_next else None
+    prev_url = url_for('index', page=todos.prev_num) \
+        if todos.has_prev else None
+    return render_template('index.html', title='Home',
+                           todos=todos.items, next_url=next_url,
+                           prev_url=prev_url)
+
+
 @app.route('/to-do/<id>')
 def to_do(id):
     todo = Todo.query.filter_by(id=id).first_or_404()
