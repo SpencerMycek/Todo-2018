@@ -46,7 +46,7 @@ class TodoForm(FlaskForm):
     for i in range(year_num, year_num+5, 1):
         year_tuple = (str(i), str(i))
         year_choice.append(year_tuple)
-    year = SelectField(_('Year'), choices=year_choice, validators=[DataRequired()])
+    year = SelectField(_l("Year"), choices=year_choice, validators=[DataRequired()])
     day_choice = [('1', _l('1')), ('2', _l('2')), ('3', _l('3')), ('4', _l('4')),
                   ('5', _l('5')), ('6', _l('6')), ('7', _l('7')),
                   ('8', _l('8')), ('9', _l('9')), ('10', _l('10')), ('11', _l('11')),

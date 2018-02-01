@@ -101,7 +101,7 @@ def to_do(id):
     todo = Todo.query.filter_by(id=id).first_or_404()
     todo.completed = not todo.completed
     db.session.commit()
-    return redirect(url_for('index'))
+    return redirect(request.referrer)
 
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])

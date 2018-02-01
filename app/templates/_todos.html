@@ -4,15 +4,15 @@
             <img src="{{ todo.author.avatar(36) }}">
         </td>
         <td>
-            {{ todo.body }}<br> due: <b>{{ moment(todo.due_date).format('LLL') }}</b>
+            {{ todo.body }}<br> {{ _('due:') }} <b>{{ moment(todo.due_date).format('LLL') }}</b>
         </td>
     </tr>
     <tr>
         <td>
             {% if not todo.completed %}
-                <p>Finished: <a href="/to-do/{{ todo.id }}">Complete!</a></p>
+                <p>{{_('Finished:') }} <a href="/to-do/{{ todo.id }}">{{ _('Complete!') }}</a></p>
             {% else %}
-                <p>Not finished: <a href="{{ url_for('to_do', id=todo.id) }}">undo</a></p>
+                <p>{{ _('Not finished:') }} <a href="{{ url_for('to_do', id=todo.id) }}">{{ _('undo') }}</a></p>
             {% endif %}
         </td>
     </tr>
