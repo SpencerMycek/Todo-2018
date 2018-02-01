@@ -4,7 +4,7 @@
             <img src="{{ todo.author.avatar(36) }}">
         </td>
         <td>
-            {{ todo.body }}<br> due: <b>{{ todo.due_date }}</b>
+            {{ todo.body }}<br> due: <b>{{ moment(todo.due_date).format('LLL') }}</b>
         </td>
     </tr>
     <tr>

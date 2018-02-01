@@ -38,7 +38,7 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ messsage }}</div>
+            <div class="alert alert-info" role="alert">{{ message }}</div>
             {% endfor %}
         </ul>
         {% endif %}
@@ -46,4 +46,9 @@
         {# application centent needs to be provided in the app_content block #}
         {% block app_content %}{% endblock %}
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
 {% endblock %}
