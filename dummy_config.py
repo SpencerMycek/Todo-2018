@@ -15,3 +15,4 @@ class Config(object):
     ADMINS = ['your-email@example.com']
     TODOS_PER_PAGE = 5
     TODOS_PER_ALL = 15
+    LANGUAGES = ['en,' 'es']
