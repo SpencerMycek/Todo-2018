@@ -1,1 +1,4 @@
 config.py
+app.db
+idea/workspace.xml
+./app/__pycache__/*
