@@ -1,4 +1,5 @@
 config.py
 app.db
-idea/workspace.xml
-./app/__pycache__/*
+app/__pycache__/*
+.idea/workspace.xml
+app.db
