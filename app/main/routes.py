@@ -47,9 +47,9 @@ def all():
     page = request.args.get('page', 1, type=int)
     todos = current_user.all_todos().paginate(
         page, current_app.config['TODOS_PER_ALL'], False)
-    next_url = url_for('index', page=todos.next_num) \
+    next_url = url_for('main.index', page=todos.next_num) \
         if todos.has_next else None
-    prev_url = url_for('index', page=todos.prev_num) \
+    prev_url = url_for('main.index', page=todos.prev_num) \
         if todos.has_prev else None
     return render_template('index.html', title=_('All'),
                            todos=todos.items, next_url=next_url,

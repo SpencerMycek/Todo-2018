@@ -86,8 +86,6 @@ if using Microsoft Windows you must use 'set' instead of 'export'
 """
 
 
-
-
 @babel.localeselector
 def get_locale():
     return request.accept_languages.best_match(current_app.config['LANGUAGES'])

@@ -1,5 +1,9 @@
-from app import app, db
+from app import create_app, db, cli
 from app.models import User, Todo
+
+
+app = create_app()
+cli.refister(app)
 
 
 @app.shell_context_processor
