@@ -1,6 +1,6 @@
-config.py
 app.db
 **/__pycache__/*
 __pycache__/
 .idea/workspace.xml
 app.db
+*.env
