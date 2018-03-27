@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-03-27 11:18-0400\n"
+"POT-Creation-Date: 2018-03-27 12:11-0400\n"
 "PO-Revision-Date: 2018-02-01 18:04-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -26,48 +26,52 @@ msgstr "Por favor inicie sesión para acceder a esta página."
 msgid "[To-do] Reset Your Password"
 msgstr ""
 
-#: app/auth/forms.py:10 app/auth/forms.py:17
+#: app/auth/forms.py:11 app/auth/forms.py:18
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#: app/auth/forms.py:11 app/auth/forms.py:19 app/auth/forms.py:41
+#: app/auth/forms.py:12 app/auth/forms.py:20 app/auth/forms.py:44
 msgid "Password"
 msgstr "Contraseña"
 
-#: app/auth/forms.py:12
+#: app/auth/forms.py:13
 msgid "Remember Me"
 msgstr "Recordarme"
 
-#: app/auth/forms.py:13 app/auth/routes.py:28 app/templates/auth/login.html:5
+#: app/auth/forms.py:14 app/auth/routes.py:28 app/templates/auth/login.html:5
 msgid "Sign In"
 msgstr "Ingresar"
 
-#: app/auth/forms.py:18 app/auth/forms.py:36
+#: app/auth/forms.py:19 app/auth/forms.py:39
 msgid "Email"
 msgstr "Email"
 
-#: app/auth/forms.py:21
+#: app/auth/forms.py:22
 msgid "Confirm Password"
 msgstr "Repetir Constaseña"
 
-#: app/auth/forms.py:22 app/auth/routes.py:49
+#: app/auth/forms.py:23 app/auth/routes.py:49
 #: app/templates/auth/register.html:5
 msgid "Register"
 msgstr "Registrarse"
 
-#: app/auth/forms.py:27
-msgid "Please use a different username."
-msgstr "Por favor use un nombre de usuario diferente."
+#: app/auth/forms.py:28
+msgid "Sorry, it looks like that username is already taken."
+msgstr "Disculpe, parece que ese nombre de usuario ya ha sido usado. "
 
-#: app/auth/forms.py:32
+#: app/auth/forms.py:30
+msgid "Username contains invalid characters."
+msgstr "El nombre de usuario contiene caracteres no válidos."
+
+#: app/auth/forms.py:35
 msgid "Please use a different email address."
 msgstr "Por favor use una dirección de email diferente."
 
-#: app/auth/forms.py:37 app/auth/forms.py:44
+#: app/auth/forms.py:40 app/auth/forms.py:47
 msgid "Request Password Reset"
 msgstr "Pedir una nueva contraseña"
 
-#: app/auth/forms.py:43
+#: app/auth/forms.py:46
 msgid "Repeat Password"
 msgstr "Repetir Contraseña"
 
@@ -304,11 +308,11 @@ msgstr "P.M"
 msgid "Submit"
 msgstr "Enviar"
 
-#: app/main/routes.py:39 app/templates/base.html:21
+#: app/main/routes.py:41 app/templates/base.html:21
 msgid "Home"
 msgstr "Inicio"
 
-#: app/main/routes.py:54 app/templates/base.html:22
+#: app/main/routes.py:56 app/templates/base.html:22
 msgid "All"
 msgstr "Todas"
 
@@ -316,15 +320,15 @@ msgstr "Todas"
 msgid "due:"
 msgstr "debido:"
 
-#: app/templates/_todos.html:13
+#: app/templates/_todos.html:9
 msgid "Click to finish."
 msgstr "Haga clic para terminar."
 
-#: app/templates/_todos.html:15
+#: app/templates/_todos.html:11
 msgid "Not finished:"
 msgstr "Sin terminar:"
 
-#: app/templates/_todos.html:15
+#: app/templates/_todos.html:11
 msgid "undo"
 msgstr "deshacer"
 
@@ -393,4 +397,13 @@ msgstr "Ha ocurrido un error inesperado"
 
 #~ msgid "Complete!"
 #~ msgstr "¡Completar!"
+
+#~ msgid "Please use a different username."
+#~ msgstr "Por favor use un nombre de usuario diferente."
+
+#~ msgid "Username taken."
+#~ msgstr ""
+
+#~ msgid "Username contains illegal characters."
+#~ msgstr ""
 

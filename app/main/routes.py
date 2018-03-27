@@ -6,6 +6,7 @@ from flask_login import current_user, login_required
 from app.models import Todo
 from datetime import datetime
 from flask_babel import _, get_locale
+import html
 
 
 @bp.route('/', methods=['GET', 'POST'])
@@ -23,7 +24,8 @@ def index():
         date_str = year + '-' + month + '-' + day + '-' \
             + hour + '-' + minute + '-' + a_p
         datetime_obj = datetime.strptime(date_str, '%Y-%b-%d-%I-%M-%p')
-        todo = Todo(body=form1.todo.data, author=current_user,
+        sanitized = html.escape(form1.todo.data)
+        todo = Todo(body=sanitized, author=current_user,
                     due_date=datetime_obj)
         db.session.add(todo)
         db.session.commit()

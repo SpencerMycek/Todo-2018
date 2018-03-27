@@ -4,6 +4,7 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 from datetime import datetime
 from flask_babel import _, lazy_gettext as _l
+import html
 
 
 class LoginForm(FlaskForm):
@@ -24,7 +25,9 @@ class RegistrationForm(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
-            raise ValidationError(_('Please use a different username.'))
+            raise ValidationError(_('Sorry, it looks like that username is already taken.'))
+        if username.data != html.escape(username.data):
+            raise ValidationError(_('Username contains invalid characters.'))
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
