@@ -5,15 +5,16 @@
         </td>
         <td>
             {{ todo.body }}<br> {{ _('due:') }} <b>{{ moment(todo.due_date).format('LLL') }}</b>
+            {% if not todo.completed %}
+                <p><a style="width: 100%;" href="{{ url_for('main.to_do', id=todo.id) }}">{{ _('Click to finish.') }}</a></p>
+            {% else %}
+                <p>{{ _('Not finished:') }} <a href="{{ url_for('main.to_do', id=todo.id) }}">{{ _('undo') }}</a></p>
+            {% endif %}
         </td>
     </tr>
     <tr>
         <td>
-            {% if not todo.completed %}
-                <p>{{_('Finished:') }} <a href="{{ url_for('main.to_do', id=todo.id) }}">{{ _('Complete!') }}</a></p>
-            {% else %}
-                <p>{{ _('Not finished:') }} <a href="{{ url_for('main.to_do', id=todo.id) }}">{{ _('undo') }}</a></p>
-            {% endif %}
+
         </td>
     </tr>
 </table>
