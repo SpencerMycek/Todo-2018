@@ -5,8 +5,9 @@ from app.main.forms import TodoForm
 from flask_login import current_user, login_required
 from app.models import Todo
 from datetime import datetime
-from flask_babel import _, get_locale
+from flask_babel import _
 import html
+import pytz
 
 
 @bp.route('/', methods=['GET', 'POST'])
@@ -24,6 +25,7 @@ def index():
         date_str = year + '-' + month + '-' + day + '-' \
             + hour + '-' + minute + '-' + a_p
         datetime_obj = datetime.strptime(date_str, '%Y-%b-%d-%I-%M-%p')
+        datetime_obj = datetime.astimezone(datetime_obj, pytz.UTC)
         sanitized = html.escape(form1.todo.data)
         todo = Todo(body=sanitized, author=current_user,
                     due_date=datetime_obj)
