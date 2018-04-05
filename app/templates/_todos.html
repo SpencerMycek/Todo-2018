@@ -6,15 +6,16 @@
         <td>
             {{ todo.body }}<br> {{ _('due:') }} <b>{{ moment(todo.due_date).format('LLL') }}</b>
             {% if not todo.completed %}
-                <p><a style="width: 100%;" href="{{ url_for('main.to_do', id=todo.id) }}">{{ _('Click to finish.') }}</a></p>
-            {% else %}
-                <p>{{ _('Not finished:') }} <a href="{{ url_for('main.to_do', id=todo.id) }}">{{ _('undo') }}</a></p>
+                <p><a style="width: 100%;" href="#" onclick="confirm_func();return false;">{{ _('Click to finish.') }}</a></p>
             {% endif %}
-        </td>
-    </tr>
-    <tr>
-        <td>
-
+            <script>
+                function confirm_func() {
+                    if(confirm("Are you sure you want to complete this To-do?")) {
+                        window.location.href = "{{ url_for('main.to_do', id=todo.id) }}"
+                    }
+                }
+            </script>
         </td>
     </tr>
 </table>
+
