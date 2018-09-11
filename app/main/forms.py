@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, Length
 from datetime import datetime
-from flask_babel import _, lazy_gettext as _l
+from flask_babel import lazy_gettext as _l
 
 
 class TodoForm(FlaskForm):

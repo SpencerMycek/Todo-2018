@@ -65,6 +65,12 @@ def to_do(id):
     todo = Todo.query.filter_by(id=id).first_or_404()
     db.session.delete(todo)
     db.session.commit()
-    return redirect(request.referrer)
+    return redirect(redirect_url())
+
+
+def redirect_url(default='main.index'):
+    return request.args.get('next') or \
+           request.referrer or \
+           url_for(default)
 
 
