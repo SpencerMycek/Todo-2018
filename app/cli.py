@@ -1,7 +1,7 @@
 import os
 import click
 
-def refister(app):
+def register(app):
     @app.cli.group()
     def translate():
         """Translation and localization commands."""
