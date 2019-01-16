@@ -3,7 +3,7 @@ from app.models import User, Todo
 
 
 app = create_app()
-cli.refister(app)
+cli.register(app)
 
 
 @app.shell_context_processor
