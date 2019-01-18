@@ -110,14 +110,21 @@ def create_task(id):
 def update_task(id, number):
     todo = Todo.query.filter_by(user_id=id, id=number).first_or_404()
     data = request.get_json() or {}
-    if 'due_date' in data:
-        if not re.match('[0-9]{4}-[a-zA-Z]{3}-[0-3][0-9]-[0-2][0-9]-[0-5][0-9]', data['due_date']):
-            return bad_request('due_date must follow the pattern of year-3LetterMonthCode-day-24HourClock-minute '
-                               '(ie: XXXX-Dec-XX-XX-XX)')
-        else:
-            datetime_obj = datetime.strptime(data['due_date'], '%Y-%b-%d-%H-%M')
-            datetime_obj = datetime.astimezone(datetime_obj, pytz.UTC)
-            data['due_date'] = datetime_obj
-    todo.from_dict(data)
-    db.session.commit()
-    return jsonify(todo.to_dict())
+    if 'complete' in data and data['complete']=='True':
+        db.session.delete(todo)
+        db.session.commit()
+        response = {
+                'Message':'Task Completed'
+        }
+        return jsonify(response)
+    else:
+        if 'due_date' in data:
+            if not re.match('[0-9]{4}-[a-zA-Z]{3}-[0-3][0-9]-[0-2][0-9]-[0-5][0-9]', data['due_date']):
+                return bad_request('due_date must follow the pattern of year-3LetterMonthCode-day-24HourClock-minute (ie: XXXX-Dec-XX-XX-XX)')
+            else:
+                datetime_obj = datetime.strptime(data['due_date'], '%Y-%b-%d-%H-%M')
+                datetime_obj = datetime.astimezone(datetime_obj, pytz.UTC)
+                data['due_date'] = datetime_obj
+        todo.from_dict(data)
+        db.session.commit()
+        return jsonify(todo.to_dict())
